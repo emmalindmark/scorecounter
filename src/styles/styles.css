@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
+
+/* Styles regarding App*/
+.App {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+}
+
+.App-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(8px + 2vmin);
+    color: white;
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-transform: uppercase;
+}
+
+/*Styles regarding Counter*/
+.Counter {
+
+    display: flex;
+    padding: 10px;
+    position: relative;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border: black 2px solid;
+}
+
+/*Styles regarding index*/
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+/*Styles regarding inputField*/
+.input {
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    /*border: black 2px solid;*/
+}
+
+.inputBox {
+    border-radius: 5px;
+    padding: 20px 20px;
+    font-size: 15px;
+    border: none;
+    transition: 0.2s;
+    box-shadow: inset 0 0 5px black;
+}
+
+.inputBox:focus {
+    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+.inputSubmit {
+    width: 50px;
+    height: 50px;
+    margin: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    background-color: #4e5665;
+    color: white;
+    transition: 0.2s all;
+    box-shadow: 0 0 10px black;
+}
+
+.inputSubmit:hover {
+    background-color: #657083;
+}
+
+.inputSubmit:active {
+    transform: scale(0.8);
+    box-shadow: 0 0 5px black;
+}
+
+.players {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+.playerBox {
+    width: 100;
+    height: 50;
+    background-color: white;
+}
