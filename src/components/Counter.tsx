@@ -35,6 +35,17 @@ const Counter = () => {
         return previouslyAdded.slice(-5).map((count, index) => ((index ? ',' : '') + count));
     }
 
+    const showCalculation = () => {
+        let sign = '+';
+        if (tempCount >= 0) {
+            sign = '+';
+        } else {
+            sign = '';
+        }
+        return <p> {count}{sign}{tempCount} = {count + tempCount} </p>
+
+    }
+
     return (
         <div className="Counter">
             <div className='container'>
@@ -45,7 +56,7 @@ const Counter = () => {
                 </div>
                 <div>
                     <p className='text'> Current count is: {count}</p>
-                    <button onClick={addCalculation}>add {tempCount} to current count</button>
+                    {isTimerActive && showCalculation()}
                 </div>
                 <div>
                     <button onClick={changeCount(-1)} className='countButton'>-1</button>
