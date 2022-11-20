@@ -13,6 +13,7 @@ const PlayerList: React.FC<Props> = ({ players, setPlayers }: Props) => {
         {players.map((player) => (
             <SinglePlayer player={player} key={player.id} players={players} setPlayers={setPlayers} />
         ))}
+        <p>{JSON.stringify(players)}</p>
     </div>;
 };
 

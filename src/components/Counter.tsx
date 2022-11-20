@@ -1,8 +1,11 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import '../styles/styles.css';
 
-const Counter = () => {
-    const [count, setCount] = useState(0);
+type Props = {
+    initialCount: number;
+}
+const Counter = ({ initialCount }: Props) => {
+    const [count, setCount] = useState(initialCount);
     const [tempCount, setTempCount] = useState(0);
     const [previouslyAdded, setPrevoiuslyAdded] = useState<number[]>([]);
     const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
@@ -43,7 +46,6 @@ const Counter = () => {
             sign = '';
         }
         return <p> {count}{sign}{tempCount} = {count + tempCount} </p>
-
     }
 
     return (

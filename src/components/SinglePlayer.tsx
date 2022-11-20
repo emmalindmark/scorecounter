@@ -13,14 +13,14 @@ const SinglePlayer = ({ player, players, setPlayers }: Props) => {
 
     const deletePlayer = (player: Player) => {
         if (players.includes(player)) {
-            const updatedPlayers = players.filter((value) => value != player);
+            const updatedPlayers = players.filter((value) => value !== player);
             setPlayers(updatedPlayers);
         }
     }
 
     return <div className='playerBox'>
-        {player.player}
-        <Counter></Counter>
+        {player.name}
+        <Counter initialCount={player.initialCount}></Counter>
         <button onClick={(e) => deletePlayer(player)}>delete</button>
     </div>
 }

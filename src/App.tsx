@@ -6,20 +6,32 @@ import InputField from "./components/InputField";
 import PlayerList from "./components/PlayerList";
 import Header from './components/Header';
 import Modal from 'react-modal';
+import SinglePlayer from './components/SinglePlayer';
+
 
 Modal.setAppElement('#app');
 
 const App = () => {
-    const [player, setPlayer] = useState("");
+    const [newPlayerName, setNewPlayerName] = useState("");
     const [players, setPlayers] = useState<Player[]>([]);
-    const [ModalIsOpen, setModalIsOpen] = React.useState(false);
+    const [ModalIsOpen, setModalIsOpen] = useState(false);
 
     const addPlayer = (e: React.FormEvent) => {
         e.preventDefault();
-        if (player) {
-            setPlayers([...players, { id: players.length, player, count: 0 }]);
-            setPlayer("");
+        if (newPlayerName) {
+            setPlayers([...players, { id: players.length, name: newPlayerName, initialCount: 0 }]);
+            setNewPlayerName("");
             closeModal();
+        }
+    }
+
+    const resetScore = () => {
+        if (players) {
+            const newPlayers = players.map((player) => {
+                return { ...player, initialCount: 5 }
+            })
+            setPlayers([...newPlayers]);
+            console.log(players);
         }
     }
 
@@ -37,14 +49,23 @@ const App = () => {
                 <h1>Score counter</h1>
             </header>
             <button onClick={openModal}>add player</button>
+            <button onClick={resetScore}>update everyones count</button>
             <Modal
                 isOpen={ModalIsOpen}
                 onRequestClose={closeModal}
             >
                 <button onClick={closeModal}>close</button>
-                <InputField player={player} setPlayer={setPlayer} handleAdd={addPlayer} />
+                <InputField
+                    playerName={newPlayerName}
+                    setNewPlayerName={setNewPlayerName}
+                    handleAdd={addPlayer} />
             </Modal>
-            <PlayerList players={players} setPlayers={setPlayers} />
+            <div className='players'>
+                {players.map((player) => (
+                    <SinglePlayer player={player} key={player.id} players={players} setPlayers={setPlayers} />
+                ))}
+                <p>{JSON.stringify(players)}</p>
+            </div>;
         </div>
     );
 }
